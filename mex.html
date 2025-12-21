@@ -61,32 +61,31 @@
             color: #8a98a8;
         }
         
-        .overview {
+        .itinerary {
             padding: 20px;
         }
         
-        .overview-grid {
-            display: grid;
-            gap: 12px;
-            padding: 10px 0;
+        .day-section {
+            margin-bottom: 15px;
         }
         
-        .day-card {
+        .day-headline {
             background: linear-gradient(135deg, #2a3340 0%, #1e2936 100%);
             color: #e0e6ed;
-            padding: 20px;
+            padding: 18px 20px;
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
             border: 1px solid #3a4550;
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .day-card::before {
+        .day-headline::before {
             content: '';
             position: absolute;
             top: 0;
@@ -97,72 +96,64 @@
             transition: width 0.3s ease;
         }
         
-        .day-card:hover {
-            transform: translateX(5px);
+        .day-headline:hover {
+            transform: translateX(3px);
             box-shadow: 0 8px 28px rgba(59, 124, 189, 0.35);
             border-color: #3b7cbd;
             background: linear-gradient(135deg, #2f3a48 0%, #222d3b 100%);
         }
         
-        .day-card:active {
-            transform: translateX(3px);
-            box-shadow: 0 6px 22px rgba(59, 124, 189, 0.3);
-        }
-        
-        .day-card:hover::before {
+        .day-headline:hover::before {
             width: 100%;
             opacity: 0.08;
         }
         
-        .day-card h2 {
-            font-size: 20px;
-            margin-bottom: 5px;
+        .day-headline h2 {
+            font-size: 18px;
             font-weight: 600;
         }
         
-        .day-card .date {
-            font-size: 13px;
+        .day-headline .date {
+            font-size: 12px;
             color: #6f7d8f;
+            display: block;
+            margin-top: 3px;
         }
         
-        .day-section {
-            padding: 30px 20px;
-            border-bottom: 1px solid #2a3340;
+        .day-headline .toggle-icon {
+            font-size: 20px;
+            color: #5a9dd9;
+            transition: transform 0.3s ease;
         }
         
-        .day-header {
-            background: linear-gradient(135deg, #1e2936 0%, #0f1419 100%);
-            padding: 25px 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            text-align: center;
-            border: 1px solid #2d5f8a;
+        .day-headline.active .toggle-icon {
+            transform: rotate(180deg);
         }
         
-        .day-header h2 {
-            font-size: 26px;
-            color: #e0e6ed;
-            margin-bottom: 5px;
-            font-weight: 700;
+        .day-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #1e2431;
+            border-radius: 0 0 12px 12px;
+            margin-top: -10px;
+            padding: 0 20px;
         }
         
-        .day-header .date {
-            font-size: 15px;
-            color: #6f7d8f;
+        .day-content.active {
+            max-height: 2000px;
+            padding: 20px;
+            margin-top: 0;
+            border: 1px solid #2a3340;
+            border-top: none;
         }
         
         .activity-section {
             background: #222935;
-            padding: 18px;
+            padding: 16px;
             margin-bottom: 12px;
             border-radius: 10px;
             border-left: 4px solid #3b7cbd;
-            transition: all 0.3s ease;
-        }
-        
-        .activity-section:hover {
-            background: #2a323f;
-            transform: translateX(3px);
         }
         
         .activity-section.morning {
@@ -182,25 +173,19 @@
         }
         
         .activity-section h3 {
-            font-size: 16px;
+            font-size: 14px;
             color: #5a9dd9;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
-        .activity-section p {
-            font-size: 15px;
-            color: #b0bac7;
-            line-height: 1.6;
-        }
-        
         .icon {
-            font-size: 20px;
+            font-size: 16px;
         }
         
         .activity-list {
@@ -209,12 +194,13 @@
         }
         
         .activity-list li {
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #2f3845;
             color: #b0bac7;
             display: flex;
             align-items: start;
             gap: 10px;
+            font-size: 14px;
         }
         
         .activity-list li:last-child {
@@ -231,26 +217,26 @@
         
         .suggestions-section {
             background: #222935;
-            padding: 20px;
+            padding: 18px;
             border-radius: 10px;
             border-left: 4px solid #3b7cbd;
         }
         
         .suggestions-section h3 {
-            font-size: 18px;
+            font-size: 16px;
             color: #5a9dd9;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: 600;
         }
         
         .link-grid {
             display: grid;
-            gap: 12px;
+            gap: 10px;
         }
         
         .link-item {
             background: #2a3340;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
             text-decoration: none;
             color: #e0e6ed;
@@ -260,6 +246,7 @@
             transition: all 0.3s ease;
             border: 1px solid #3a4550;
             box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+            font-size: 14px;
         }
         
         .link-item:hover {
@@ -269,38 +256,18 @@
             box-shadow: 0 5px 20px rgba(59, 124, 189, 0.3);
         }
         
-        .link-item:active {
-            transform: translateX(3px);
-            box-shadow: 0 4px 16px rgba(59, 124, 189, 0.25);
-        }
-        
         .link-item span {
-            font-size: 15px;
             font-weight: 500;
         }
         
         .link-item::after {
             content: "→";
             color: #3b7cbd;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
         }
         
-        .back-link {
-            display: inline-block;
-            color: #5a9dd9;
-            text-decoration: none;
-            margin-top: 15px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            opacity: 0.8;
-        }
-        
-        .back-link:hover {
-            opacity: 1;
-            color: #6baee6;
-            text-decoration: underline;
-        }
+
     </style>
 </head>
 <body>
@@ -310,245 +277,249 @@
             <p>January 9-19, 2026</p>
         </div>
         
-        <section id="overview" class="overview">
-            <div class="overview-grid">
-                <a href="#day1" class="day-card">
-                    <h2>Day 1: Arrive and Relax</h2>
-                    <p class="date">Friday, January 9</p>
-                </a>
-                <a href="#day2" class="day-card">
-                    <h2>Day 2: First Impression</h2>
-                    <p class="date">Saturday, January 10</p>
-                </a>
-                <a href="#day3" class="day-card">
-                    <h2>Day 3: Historic Center</h2>
-                    <p class="date">Sunday, January 11</p>
-                </a>
-                <a href="#day4" class="day-card">
-                    <h2>Day 4: Pyramids</h2>
-                    <p class="date">Monday, January 12</p>
-                </a>
-                <a href="#day5" class="day-card">
-                    <h2>Day 5: Half-Working Day & Coyoacan</h2>
-                    <p class="date">Tuesday, January 13</p>
-                </a>
-                <a href="#day6" class="day-card">
-                    <h2>Days 6-9: To be Planned On-the-Go</h2>
-                    <p class="date">Wednesday-Saturday, January 14-17</p>
-                </a>
-                <a href="#day10" class="day-card">
-                    <h2>Day 10: Pack your bags!</h2>
-                    <p class="date">Sunday, January 18</p>
-                </a>
-                <a href="#day11" class="day-card">
-                    <h2>Day 11: Vegas Baby</h2>
-                    <p class="date">Monday, January 19</p>
-                </a>
-            </div>
-        </section>
-        
-        <section id="day1" class="day-section">
-            <div class="day-header">
-                <h2>Arrive and Relax</h2>
-                <p class="date">Friday, January 9, 2026</p>
-            </div>
-            
-            <div class="activity-section evening">
-                <h3><span class="icon">🌙</span> Evening</h3>
-                <ul class="activity-list">
-                    <li>Meet you at the airport (#DL585 ETA 8:50PM @T2) and uber home</li>
-                    <li>Optional casual / home-order dinner, shower & sleep</li>
-                </ul>
-            </div>
-            
-            <a href="#overview" class="back-link">↑ Back to Overview</a>
-        </section>
-        
-        <section id="day2" class="day-section">
-            <div class="day-header">
-                <h2>First Impression</h2>
-                <p class="date">Saturday, January 10, 2026</p>
-            </div>
-            
-            <div class="activity-section day">
-                <h3><span class="icon">☀️</span> Day Activity</h3>
-                <ul class="activity-list">
-                    <li>Breakfast in Condesa neighborhood</li>
-                    <li>Walk Av. Amsterdam loop to Chapultepec Park and Castle</li>
-                </ul>
-            </div>
-            
-            <div class="activity-section evening">
-                <h3><span class="icon">🌙</span> Evening</h3>
-                <ul class="activity-list">
-                    <li>Dinner and welcome drink(s) in Roma Norte (Contramar or Pandora rooftop)</li>
-                </ul>
-            </div>
-            
-            <a href="#overview" class="back-link">↑ Back to Overview</a>
-        </section>
-        
-        <section id="day3" class="day-section">
-            <div class="day-header">
-                <h2>Historic Center</h2>
-                <p class="date">Sunday, January 11, 2026</p>
-            </div>
-            
-            <div class="activity-section morning">
-                <h3><span class="icon">🌅</span> Morning</h3>
-                <ul class="activity-list">
-                    <li>Bicycle ride along (closed to traffic) Reforma and Alameda Central</li>
-                </ul>
-            </div>
-            
-            <div class="activity-section afternoon">
-                <h3><span class="icon">☀️</span> Afternoon</h3>
-                <ul class="activity-list">
-                    <li>Lunch in Centro Histórico (Zócalo rooftop)</li>
-                    <li>Visit museum & Cathedral</li>
-                </ul>
-            </div>
-            
-            <div class="activity-section evening">
-                <h3><span class="icon">🌙</span> Evening</h3>
-                <ul class="activity-list">
-                    <li>Torre Latino & Barrio Chino 🇨🇳 (find authentic Chinese dinner)</li>
-                </ul>
-            </div>
-            
-            <a href="#overview" class="back-link">↑ Back to Overview</a>
-        </section>
-        
-        <section id="day4" class="day-section">
-            <div class="day-header">
-                <h2>Pyramids</h2>
-                <p class="date">Monday, January 12, 2026</p>
-            </div>
-            
-            <div class="activity-section day">
-                <h3><span class="icon">🌄</span> Day Activity</h3>
-                <ul class="activity-list">
-                    <li>Wake up at 4AM for a tour to the Teotihuacán pyramids</li>
-                    <li>Check vital signs upon return, cook-at-home dinner</li>
-                </ul>
-            </div>
-            
-            <a href="#overview" class="back-link">↑ Back to Overview</a>
-        </section>
-        
-        <section id="day5" class="day-section">
-            <div class="day-header">
-                <h2>Half-Working Day & Coyoacan</h2>
-                <p class="date">Tuesday, January 13, 2026</p>
-            </div>
-            
-            <div class="activity-section morning">
-                <h3><span class="icon">🌅</span> Morning Activity</h3>
-                <ul class="activity-list">
-                    <li>Breakfast and work from home</li>
-                </ul>
-            </div>
-            
-            <div class="activity-section day">
-                <h3><span class="icon">☀️</span> Day Activity</h3>
-                <ul class="activity-list">
-                    <li>Coyoacán neighborhood with Frida Kahlo museum</li>
-                    <li>Dinner around Jardín Centenario</li>
-                </ul>
-            </div>
-            
-            <a href="#overview" class="back-link">↑ Back to Overview</a>
-        </section>
-        
-        <section id="day6" class="day-section">
-            <div class="day-header">
-                <h2>To be Planned on the fly</h2>
-                <p class="date">Wednesday-Saturday, January 14-17, 2026</p>
-            </div>
-            
-            <div class="suggestions-section">
-                <h3>Activity Suggestions</h3>
-                <div class="link-grid">
-                    <a href="https://www.sixflags.com/mexico" target="_blank" class="link-item">
-                        <span>Six Flags</span>
-                    </a>
-                    <a href="https://cinepolis.com/mx?cinema=cinepolis-forum-buenavista-cdmx" target="_blank" class="link-item">
-                        <span>Cinema</span>
-                    </a>
-                    <a href="https://www.cinetecanacional.net/sedes/cartelera.php?cinemaId=003#gsc.tab=0" target="_blank" class="link-item">
-                        <span>Art Cinema</span>
-                    </a>
-                    <a href="https://www.auditorio.com.mx/?page=0&mes=01&anio=2026" target="_blank" class="link-item">
-                        <span>Opera</span>
-                    </a>
-                    <a href="https://maps.app.goo.gl/bJPihPHXUtXEdzRK8" target="_blank" class="link-item">
-                        <span>Xochimilco boat ride</span>
-                    </a>
-                    <a href="http://www.ice-station.com.mx/index.php" target="_blank" class="link-item">
-                        <span>Ice skating</span>
-                    </a>
-                    <a href="https://www.museosoumaya.org/" target="_blank" class="link-item">
-                        <span>Museo Soumaya</span>
-                    </a>
-                    <a href="https://www.grutastolantongo.com.mx/en/" target="_blank" class="link-item">
-                        <span>Hot Springs (Full-Day)</span>
-                    </a>
-                    <a href="https://quelocotours.com/popocatepetl-active-volcano/" target="_blank" class="link-item">
-                        <span>Volcano hike (Full-Day)</span>
-                    </a>
-                    <a href="https://maps.app.goo.gl/rK5Gr5FA711fCwj27" target="_blank" class="link-item">
-                        <span>Beach (Multi-Day and flight!)</span>
-                    </a>
-                    <a href="https://maps.app.goo.gl/wgSqKFmEMPHtiict7" target="_blank" class="link-item">
-                        <span>Tepoztlán (Full-Day)</span>
-                    </a>
-                    <a href="https://maps.app.goo.gl/tWCyCz7FNNSdXNqL7" target="_blank" class="link-item">
-                        <span>Taxco (Full-Day)</span>
-                    </a>
+        <div class="itinerary">
+            <!-- Day 1 -->
+            <div class="day-section">
+                <div class="day-headline" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 1: Arrive and Relax</h2>
+                        <span class="date">Friday, January 9</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity-section evening">
+                        <h3><span class="icon">🌙</span> Evening</h3>
+                        <ul class="activity-list">
+                            <li>Meet you at the airport (#DL585 ETA 8:50PM @T2) and uber home</li>
+                            <li>Optional dinner</li>
+                            <li>Shower & sleep</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
-            <a href="#overview" class="back-link">↑ Back to Overview</a>
-        </section>
-        
-        <section id="day10" class="day-section">
-            <div class="day-header">
-                <h2>Pack your bags!</h2>
-                <p class="date">Sunday, January 18, 2026</p>
+
+            <!-- Day 2 -->
+            <div class="day-section">
+                <div class="day-headline" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 2: First Impression</h2>
+                        <span class="date">Saturday, January 10</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity-section day">
+                        <h3><span class="icon">☀️</span> Day Activity</h3>
+                        <ul class="activity-list">
+                            <li>Morning coffee in Condesa</li>
+                            <li>Walk Av. Amsterdam loop to Chapultepec Park and Castle</li>
+                        </ul>
+                    </div>
+                    <div class="activity-section evening">
+                        <h3><span class="icon">🌙</span> Evening</h3>
+                        <ul class="activity-list">
+                            <li>Dinner and welcome drinks in Roma Norte (Contramar or Pandora rooftop)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="activity-section day">
-                <h3><span class="icon">☀️</span> Day Activity</h3>
-                <ul class="activity-list">
-                    <li>Kiosco Morisco neighborhood (near Apt.), Library Vasconcelos</li>
-                </ul>
+
+            <!-- Day 3 -->
+            <div class="day-section">
+                <div class="day-headline" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 3: Historic Center</h2>
+                        <span class="date">Sunday, January 11</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity-section morning">
+                        <h3><span class="icon">🌅</span> Morning</h3>
+                        <ul class="activity-list">
+                            <li>Bicycle ride along Reforma and Alameda Central (roads closed to traffic on Sun)</li>
+                        </ul>
+                    </div>
+                    <div class="activity-section afternoon">
+                        <h3><span class="icon">☀️</span> Afternoon</h3>
+                        <ul class="activity-list">
+                            <li>Lunch in Centro Histórico (Zócalo rooftop)</li>
+                            <li>Visit museum & Cathedral</li>
+                        </ul>
+                    </div>
+                    <div class="activity-section evening">
+                        <h3><span class="icon">🌙</span> Evening</h3>
+                        <ul class="activity-list">
+                            <li>Torre Latino & Barrio Chino 🇨🇳 (find authentic Chinese dinner)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="activity-section evening">
-                <h3><span class="icon">🌙</span> Evening</h3>
-                <ul class="activity-list">
-                    <li>Final dinner</li>
-                </ul>
+
+            <!-- Day 4 -->
+            <div class="day-section">
+                <div class="day-headline" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 4: Pyramids</h2>
+                        <span class="date">Monday, January 12</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity-section day">
+                        <h3><span class="icon">🌄</span> Day Activity</h3>
+                        <ul class="activity-list">
+                            <li>Wake up at 4AM for a tour to the Teotihuacán pyramids</li>
+                            <li>Check vital signs upon return, cook-at-home dinner</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <a href="#overview" class="back-link">↑ Back to Overview</a>
-        </section>
-        
-        <section id="day11" class="day-section">
-            <div class="day-header">
-                <h2>Vegas Baby</h2>
-                <p class="date">Monday, January 19, 2026</p>
+
+            <!-- Day 5 -->
+            <div class="day-section">
+                <div class="day-headline" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 5: Half-Working Day & Coyoacan</h2>
+                        <span class="date">Tuesday, January 13</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity-section morning">
+                        <h3><span class="icon">🌅</span> Morning Activity</h3>
+                        <ul class="activity-list">
+                            <li>Breakfast and work from home</li>
+                        </ul>
+                    </div>
+                    <div class="activity-section day">
+                        <h3><span class="icon">☀️</span> Day Activity</h3>
+                        <ul class="activity-list">
+                            <li>Coyoacán neighborhood with Frida Kahlo museum</li>
+                            <li>Dinner around Jardín Centenario</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="activity-section morning">
-                <h3><span class="icon">✈️</span> Morning</h3>
-                <ul class="activity-list">
-                    <li>~740AM Uber to airport with your favorite colleague (Flight VB112 - ETD: 11AM)</li>
-                </ul>
+
+            <!-- Days 6-9 -->
+            <div class="day-section">
+                <div class="day-headline" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Days 6-9: To be Planned on the Fly</h2>
+                        <span class="date">Wednesday-Saturday, January 14-17</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="suggestions-section">
+                        <h3>Activity Suggestions</h3>
+                        <div class="link-grid">
+                            <a href="https://www.sixflags.com/mexico" target="_blank" class="link-item">
+                                <span>Six Flags</span>
+                            </a>
+                            <a href="https://cinepolis.com/mx?cinema=cinepolis-forum-buenavista-cdmx" target="_blank" class="link-item">
+                                <span>Cinema</span>
+                            </a>
+                            <a href="https://www.cinetecanacional.net/sedes/cartelera.php?cinemaId=003#gsc.tab=0" target="_blank" class="link-item">
+                                <span>Art Cinema</span>
+                            </a>
+                            <a href="https://www.auditorio.com.mx/?page=0&mes=01&anio=2026" target="_blank" class="link-item">
+                                <span>Opera</span>
+                            </a>
+                            <a href="https://maps.app.goo.gl/bJPihPHXUtXEdzRK8" target="_blank" class="link-item">
+                                <span>Xochimilco boat ride</span>
+                            </a>
+                            <a href="http://www.ice-station.com.mx/index.php" target="_blank" class="link-item">
+                                <span>Ice skating</span>
+                            </a>
+                            <a href="https://www.museosoumaya.org/" target="_blank" class="link-item">
+                                <span>Museo Soumaya</span>
+                            </a>
+                            <a href="https://www.grutastolantongo.com.mx/en/" target="_blank" class="link-item">
+                                <span>Hot Springs</span>
+                            </a>
+                            <a href="https://quelocotours.com/popocatepetl-active-volcano/" target="_blank" class="link-item">
+                                <span>Volcano hike</span>
+                            </a>
+                            <a href="https://maps.app.goo.gl/rK5Gr5FA711fCwj27" target="_blank" class="link-item">
+                                <span>Beach</span>
+                            </a>
+                            <a href="https://maps.app.goo.gl/wgSqKFmEMPHtiict7" target="_blank" class="link-item">
+                                <span>Tepoztlán</span>
+                            </a>
+                            <a href="https://maps.app.goo.gl/tWCyCz7FNNSdXNqL7" target="_blank" class="link-item">
+                                <span>Taxco</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <a href="#overview" class="back-link">↑ Back to Overview</a>
-        </section>
+
+            <!-- Day 10 -->
+            <div class="day-section">
+                <div class="day-headline" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 10: Pack your bags!</h2>
+                        <span class="date">Sunday, January 18</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity-section day">
+                        <h3><span class="icon">☀️</span> Day Activity</h3>
+                        <ul class="activity-list">
+                            <li>Kiosco Morisco neighborhood (near Apt.), Library Vasconcelos</li>
+                        </ul>
+                    </div>
+                    <div class="activity-section evening">
+                        <h3><span class="icon">🌙</span> Evening</h3>
+                        <ul class="activity-list">
+                            <li>Final dinner</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 11 -->
+            <div class="day-section">
+                <div class="day-headline" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 11: Vegas Baby</h2>
+                        <span class="date">Monday, January 19</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity-section morning">
+                        <h3><span class="icon">✈️</span> Morning</h3>
+                        <ul class="activity-list">
+                            <li>7:45AM Uber to airport with your favorite colleague (Flight VB112 - ETD: 11AM)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function toggleDay(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.toggle-icon');
+            
+            // Close all other sections
+            document.querySelectorAll('.day-content').forEach(item => {
+                if (item !== content) {
+                    item.classList.remove('active');
+                    item.previousElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Toggle current section
+            content.classList.toggle('active');
+            element.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
